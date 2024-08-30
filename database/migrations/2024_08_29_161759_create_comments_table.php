@@ -8,11 +8,14 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('creator_id')->nullable()->after('posted_by')->constrained('creators')->onDelete('cascade')->onUpdate("cascade");
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+            $table->string('body');
+            $table->integer('commentable_id')->nullable();
+            $table->string('commentable_type')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,9 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('creator_id');
-        });
+        Schema::dropIfExists('comments');
     }
 };
-

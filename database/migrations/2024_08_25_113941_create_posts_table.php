@@ -15,9 +15,8 @@ return new class extends Migration {
             $table->string('title', length: 100);
             $table->text('description');
             $table->string('posted_by');
-            
+            $table->softDeletes();
             $table->timestamps();
-
         });
     }
     /** 

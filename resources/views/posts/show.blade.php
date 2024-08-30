@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="border border-gray-400 rounded-lg m-20">
+    <div class="border border-gray-400 rounded-lg m-16">
+
         <div
             class=" border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r  flex flex-col justify-between leading-normal">
             <div class="mb-8 bg-gray-400">
@@ -13,16 +14,26 @@
                     </svg>
                     Members only
                 </p>
-                <div class=" text-gray-900 font-bold text-xl mb-2">Title: {{ $post->title }}</div>
+                <div class=" text-gray-900 font-bold text-xl m-2   ">Title: {{ $post->title }}
+                    <a href="{{ route('comments.create', $post->id) }}"
+                        class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  ">Comment</a>
+                </div>
             </div>
-            <p class="text-gray-700 text-base p-3"> <strong>Description: </strong> {{ $post->description }}</p>
-            <img src="{{ asset('images/posts/' . $post->image) }}" width="300" height=auto alt="">
+            <div class="m-4">
+                <p class="text-gray-700 text-base p-3"> <strong>Description: </strong> {{ $post->description }}</p>
+                <img src="{{ asset('images/posts/' . $post->image) }}" width="300" height=auto alt="">
+            </div>
             <div class="flex items-center">
                 <div class="text-sm p-3">
-                    <p class="text-gray-900 leading-none">Posted by {{ $post->posted_by }}</p>
+                    <p class="text-gray-900 leading-none">Posted by {{ ucfirst($post->posted_by) }}</p>
                     <p class="text-gray-600">{{ $post->created_at->format('d/m/Y') }}</p>
                 </div>
             </div>
+            <div>
+                @dump($post->comments)
+            </div>
+
+
         </div>
     </div>
 @endsection

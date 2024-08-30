@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+.table-border {
+    @apply border-gray-800 border-2;
+}

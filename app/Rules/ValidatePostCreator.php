@@ -14,7 +14,7 @@ class ValidatePostCreator implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!in_array(strtolower($value), ['ahmed', 'omar', 'hossam', 'mahmoud'])) {
+        if (!in_array(strtolower($value), ['omar', 'hegazy', 'mostafa', 'karim', 'sherif'])) {
             $fail("Wrong creator!!");
         }
     }

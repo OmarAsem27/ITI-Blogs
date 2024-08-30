@@ -5,10 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Creator;
+use Illuminate\Routing\ResourceRegistrar;
 use App\Models\Post;
 
 class PostController extends Controller
 {
+    protected $resourceDefaults = ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy', 'data'];
+
+
+
     /**
      * Display a listing of the resource.
      */
@@ -22,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("posts.create");
+        $creators = Creator::all();
+        return view("posts.create", compact('creators'));
     }
 
     /**
@@ -65,6 +72,10 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        $image_path = public_path('images/posts/' . $post->image);
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
         $image_path = $post->image;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -81,7 +92,32 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        // start SOFT delete
+        // $post->delete();      ///////////////   This SOFT deletes the post 
+        // end SOFT delete
+
+
+        // start HARD delete
+        // $post->forceDelete(); // This permanently deletes the post for ever!
+        // end HARD delete
+
+
+        $image_path = public_path('images/posts/' . $post->image);
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+
+        // $post->delete();      ///////////////   This SOFT deletes the post 
+        $post->forceDelete();   ///////////////    This permanently deletes the post for ever!
         return to_route('posts.index');
     }
+    public function restoreSoftDeleted($id)
+    {
+        // $post = Post::withTrashed()->find($id);
+        // $post->restore();       // This restores the soft-deleted post
+        // return to_route('posts.index');
+
+        return "DONEEEEEEEEEEEEEEEE";
+    }
+
 }

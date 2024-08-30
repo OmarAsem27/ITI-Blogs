@@ -20,9 +20,10 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->realTextBetween(2,10),
+            'title' => $this->faker->realTextBetween(2, 10),
             'description' => $this->faker->sentence(30),
-            'image' => $this->faker->image()
+            'image' => $this->faker->image(),
+            'posted_by' => $this->faker->firstName()
         ];
     }
 }

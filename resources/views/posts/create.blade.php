@@ -33,12 +33,13 @@
         {{-- start select ------------------------------------------------ --}}
         <div class="mb-5">
             <label for="creators" class="block mb-2 text-sm font-medium text-black-900">Post Creator</label>
+
             <select name="posted_by" id="creators"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-dark-500  block w-full p-2.5  ">
-                <option value="ahmed">Ahmed</option>
-                <option value="omar">Omar</option>
-                <option value="hossam">Hossam</option>
-                <option value="mahmoud">Mahmoud</option>
+                <option disabled selected value=""> Please choose creator</option>
+                @foreach ($creators as $creator)
+                    <option value="{{ $creator->id }}"> {{ $creator->name }}</option>
+                @endforeach
             </select>
         </div>
         {{-- end select ------------------------------------------------ --}}

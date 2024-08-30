@@ -18,17 +18,18 @@ class Post extends Model
         'title',
         'description',
         'posted_by',
-        'image'
+        'image',
+        'creator_id'
     ];
 
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(Creator::class);
+        return $this->belongsTo(User::class);
     }
 
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
-
+    
 }

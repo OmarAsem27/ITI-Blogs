@@ -8,12 +8,17 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Creator;
 use Illuminate\Routing\ResourceRegistrar;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
     protected $resourceDefaults = ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy', 'data'];
 
-
+    function __construct()
+    {
+        // Authorization middleware
+        $this->middleware('auth')->only(['store']);
+    }
 
     /**
      * Display a listing of the resource.
@@ -44,9 +49,12 @@ class PostController extends Controller
         }
         $request_data = request()->all();
         $request_data['image'] = $image_path;
+        $request_data['creator_id'] = Auth::id();
         $post = Post::create($request_data);
+        return dd($post);
+
         // return view('posts.show', ['post' => $post]); // SAME
-        return to_route('posts.show', $post);
+        // return to_route('posts.show', $post);
     }
 
     /**

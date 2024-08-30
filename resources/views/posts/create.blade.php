@@ -31,6 +31,7 @@
                 id="file_input" type="file" name='image'>
         </div>
         {{-- start select ------------------------------------------------ --}}
+{{--        
         <div class="mb-5">
             <label for="creators" class="block mb-2 text-sm font-medium text-black-900">Post Creator</label>
 
@@ -41,7 +42,9 @@
                     <option value="{{ $creator->id }}"> {{ $creator->name }}</option>
                 @endforeach
             </select>
-        </div>
+        </div> --}}
+
+
         {{-- end select ------------------------------------------------ --}}
         {{-- create BUTTONNNNNNNNNNNNNNNNNNNNN --}}
         <button type="submit"

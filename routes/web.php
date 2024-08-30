@@ -34,3 +34,8 @@ Route::resource('comments', CommentController::class);
 //     dd(request());
 //     return "RESTOREDDDDDDDDDDDDDDDDDDDD";
 // });
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

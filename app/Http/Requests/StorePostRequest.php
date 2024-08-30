@@ -24,7 +24,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|string|min:3|unique:posts',
             'description' => 'required|string|min:10',
-            'posted_by' => ['required', 'string', new ValidatePostCreator()],
+            // 'posted_by' => ['required', 'string', new ValidatePostCreator()],
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ];
     }

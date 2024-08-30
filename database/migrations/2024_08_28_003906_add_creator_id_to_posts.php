@@ -12,7 +12,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignId('creator_id')->nullable()->after('posted_by')->constrained('creators')->onDelete('cascade')->onUpdate("cascade");
+            $table->foreignId('creator_id')->nullable()->after('posted_by')->constrained('users')
+                ->onDelete('set null')->onUpdate("cascade");
         });
     }
 
@@ -22,6 +23,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('posts', function (Blueprint $table) {
+            $table->dropForeign('posts_creator_id_foreign');
             $table->dropColumn('creator_id');
         });
     }

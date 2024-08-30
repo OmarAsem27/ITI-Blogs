@@ -16,27 +16,30 @@
     <table class="w-full text-sm  text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th scope="col" class="px-6 py-3 table-border"> ID</th>
-                <th scope="col" class="px-6 py-3 table-border"> Image</th>
-                <th scope="col" class="px-6 py-3 table-border"> Title</th>
-                <th scope="col" class="px-6 py-3 table-border"> Body</th>
-                <th scope="col" class="px-6 py-3 table-border"> Posted By</th>
-                <th scope="col" class="px-6 py-3 table-border"> Created At</th>
-                <th scope="col" class="px-6 py-3 table-border">Actions</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2"> ID</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2"> Image</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2"> Title</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2"> Body</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2"> Posted By</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2"> Created At</th>
+                <th scope="col" class="px-6 py-3 border-gray-800 border-2">Actions</th>
             </tr>
         </thead>
         <tbody class="">
             @foreach ($posts as $post)
                 <tr class="bg-gray-200  dark:bg-gray-800 dark:border-gray-700">
-                    <td class="px-6 py-4 table-border ">{{ $post->id }}</td>
-                    <td class="px-6 py-4 table-border "><img src="{{ asset('images/posts/' . $post->image) }}"
+                    <td class="px-6 py-4 border-gray-800 border-2 ">{{ $post->id }}</td>
+                    <td class="px-6 py-4 border-gray-800 border-2 "><img src="{{ asset('images/posts/' . $post->image) }}"
                             width="200">
                     </td>
-                    <td class="px-6 py-4 table-border ">{{ $post->title }}</td>
-                    <td class="px-6 py-4 table-border ">{{ $post->description }}</td>
-                    <td class="px-6 py-4 table-border ">{{ ucfirst($post->posted_by) }}</td>
-                    <td class="px-6 py-4 table-border ">{{ $post->created_at->format('d/m/Y') }}</td>
-                    <td class="table-border text-center">
+                    <td class="px-6 py-4 border-gray-800 border-2 ">{{ $post->title }}</td>
+                    <td class="px-6 py-4 border-gray-800 border-2 ">{{ $post->description }}</td>
+                    {{-- <td class="px-6 py-4 border-gray-800 border-2 ">{{ $post->creator->name }}</td> --}}
+
+                    
+
+                    <td class="px-6 py-4 border-gray-800 border-2 ">{{ $post->created_at->format('d/m/Y') }}</td>
+                    <td class="border-gray-800 border-2 text-center">
                         {{-- View button --}}
                         <a href="{{ route('posts.show', $post->id) }}"
                             class="text-white inline-block bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 me-2 m-2 ">View</a>
@@ -83,7 +86,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button data-modal-hide="{{ 'popup-modal' . $post->id }}" type="submit"
-                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                                     Yes, I'm sure
                                                 </button>
                                             </form>

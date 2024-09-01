@@ -28,4 +28,14 @@ class StorePostRequest extends FormRequest
             'image' => 'required|image|mimes:jpeg,jpg,png|max:2048'
         ];
     }
+
+    public  function messages(): array
+    {
+        return [
+            "title.required"=>"title is required",
+            "description.required"=>"description is required",
+            "image.required"=>"image required for a post",
+            "image.invalid"=>"image needed for a post",
+        ];
+    }
 }

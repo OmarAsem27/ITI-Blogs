@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title', length: 100);
             $table->text('description');
+            $table->string('slug')->nullable();
             $table->string('posted_by')->nullable();
             $table->softDeletes();
             $table->timestamps();

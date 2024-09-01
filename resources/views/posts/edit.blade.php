@@ -32,7 +32,7 @@
                 id="file_input" type="file" name='image'>
         </div>
         {{-- start select ------------------------------------------------ --}}
-        <div class="mb-5">
+        {{-- <div class="mb-5">
             <label for="creators" class="block mb-2 text-sm font-medium text-black-900">Post Creator</label>
             <select name="posted_by" id="creators"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-dark-500  block w-full p-2.5  ">
@@ -42,7 +42,7 @@
                 <option value="hossam">Hossam</option>
                 <option value="mahmoud">Mahmoud</option>
             </select>
-        </div>
+        </div> --}}
         {{-- end select ------------------------------------------------ --}}
         {{-- create BUTTON --}}
         <button type="submit"

@@ -8,7 +8,9 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Creator;
 use Illuminate\Routing\ResourceRegistrar;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -25,23 +27,41 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(3);
-        return view('posts.index', ['posts' => $posts]);
+
+        $posts = Post::paginate(4);
+        $user = Auth::user();
+        // return $user->posts->count();
+        // return $user->posts()->count();
+        return view('posts.index', ['posts' => $posts, 'user' => $user]);
     }
+
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         $creators = Creator::all();
+
+
+
         return view("posts.create", compact('creators'));
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorePostRequest $request)
     {
+
+        $user = Auth::user();
+        if ($user->posts->count() >= 3) {
+            return redirect()->route('posts.index')->with('error', 'You are done with 3 posts already.');
+        }
+
         $image_path = null;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -51,11 +71,14 @@ class PostController extends Controller
         $request_data['image'] = $image_path;
         $request_data['creator_id'] = Auth::id();
         $post = Post::create($request_data);
-        return dd($post);
+        // return dd($post);
 
         // return view('posts.show', ['post' => $post]); // SAME
-        // return to_route('posts.show', $post);
+        return to_route('posts.show', $post);
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -80,6 +103,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+
         $image_path = public_path('images/posts/' . $post->image);
         if (file_exists($image_path)) {
             unlink($image_path);

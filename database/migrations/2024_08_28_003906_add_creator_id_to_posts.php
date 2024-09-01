@@ -13,7 +13,7 @@ return new class extends Migration {
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->foreignId('creator_id')->nullable()->after('posted_by')->constrained('users')
-                ->onDelete('set null')->onUpdate("cascade");
+                ->onUpdate('cascade')->onDelete('set null');
         });
     }
 

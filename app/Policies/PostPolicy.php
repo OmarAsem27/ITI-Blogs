@@ -29,7 +29,8 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        
+        // return $user->posts->count() == 3;
+
     }
 
     /**
@@ -37,7 +38,6 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        //
     }
 
     /**

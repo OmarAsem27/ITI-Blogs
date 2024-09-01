@@ -17,12 +17,12 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="w-full rounded-lg form-control @error('email') is-invalid @enderror"
+                                        class="w-full rounded-lg form-control  @error('email') is-invalid @enderror"
                                         name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                     @error('email')
-                                        <span class="block invalid-feedback text-red-400" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="block invalid-feedback text-red-500" role="alert">
+                                            <strong class="text-red-500">{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -34,12 +34,12 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="w-full  rounded-lg form-control @error('password') is-invalid @enderror"
+                                        class="w-full  rounded-lg form-contro @error('password') is-invalid @enderror"
                                         name="password" required autocomplete="current-password">
 
                                     @error('password')
-                                        <span class="block invalid-feedback text-red-400" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="block invalid-feedback " role="alert">
+                                            <strong class="text-red-500">{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -64,15 +64,23 @@
                                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                         {{ __('Login') }}
                                     </button>
+                                    {{-- github --}}
+                                    <a class="text-white bg-gray-600 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+                                        href="{{ route('github.login') }}">Login with github</a>
 
                                     @if (Route::has('password.request'))
-                                        <a class="underline hover:text-blue-600" href="{{ route('password.request') }}">
+                                        <a class="underline hover:text-blue-600 block"
+                                            href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
                                 </div>
                             </div>
+                            <div class="text-center ">
+
+                            </div>
                         </form>
+
                     </div>
                 </div>
             </div>

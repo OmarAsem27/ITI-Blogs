@@ -38,6 +38,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -45,26 +47,36 @@
 
 {{-- end Tailwind CSS --}}
 
-<body>
+<body class="bg-gray-200">
     <div id="app">
         <nav class="bg-gray-300 border-gray-200">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
 
-                <a class="navbar-brand" href="{{ route('posts.index') }}">
-                    {{ 'Blogs' }}
+                <a href="{{ route('posts.index') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap "> {{ 'Blogs' }}</span>
                 </a>
-                <a class="navbar-brand" href="{{ route('comments.index') }}">
+                <button data-collapse-toggle="navbar-dropdown" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+                    aria-controls="navbar-dropdown" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+
+                {{-- <a class="navbar-brand" href="{{ route('comments.index') }}">
                     {{ 'Comments' }}
-                </a>
+                </a> --}}
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-
 
 
                 <div class="hidden w-full md:block md:w-auto" id="navbarSupportedContent">
@@ -125,7 +137,7 @@
 
 
 
-        <main class="container m-auto">
+        <main class="text-center    ">
             @yield('content')
         </main>
     </div>
@@ -133,9 +145,9 @@
 
 </html>
 
-{{-- 
+{{-- flowbite --}}
 
-<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+{{-- <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
 
@@ -178,4 +190,4 @@
             </ul>
         </div>
     </div>
-</nav> --}}
+</nav>  --}}

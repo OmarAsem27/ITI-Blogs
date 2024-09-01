@@ -25,7 +25,7 @@
             </div>
             <div class="flex items-center">
                 <div class="text-sm p-3">
-                    <p class="text-gray-900 leading-none"><strong>Created by {{ $post->creator->name }} </strong> </p>
+                    <p class="text-gray-900 leading-none"><strong>Created by {{ $post->creator->name ?? "Unknown" }} </strong> </p>
                     {{-- <p class="text-gray-900 leading-none">Posted by {{ ucfirst($post->posted_by) }}</p> --}}
                     <p class="text-gray-600">{{ $post->created_at->format('d/m/Y') }}</p>
                 </div>

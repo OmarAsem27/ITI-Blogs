@@ -28,7 +28,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::paginate(4);
+        $posts = Post::paginate(3);
         $user = Auth::user();
         // return $user->posts->count();
         // return $user->posts()->count();
@@ -125,7 +125,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         // start SOFT delete
-        // $post->delete();      ///////////////   This SOFT deletes the post 
+        // $post->delete();      ///////////////   This SOFT deletes the post
         // end SOFT delete
 
 
@@ -139,7 +139,7 @@ class PostController extends Controller
             unlink($image_path);
         }
 
-        // $post->delete();      ///////////////   This SOFT deletes the post 
+        // $post->delete();      ///////////////   This SOFT deletes the post
         $post->forceDelete();   ///////////////    This permanently deletes the post for ever!
         return to_route('posts.index');
     }

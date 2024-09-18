@@ -67,6 +67,13 @@
                                 </li>
                             @endif
                         @else
+                            <div class="text-center">
+                                <a href="{{ route('posts.create') }}">
+                                    <button
+                                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg px-5 py-2 me-2   ">
+                                        Create Post </button>
+                                </a>
+                            </div>
                             <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
                                 type="button"> {{ Auth::user()->name }} <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true"
